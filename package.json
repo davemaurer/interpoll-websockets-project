@@ -1,0 +1,25 @@
+{
+  "name": "interpoll-two",
+  "version": "1.0.0",
+  "description": "websockets project creating a real time polling application",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davemaurer/interpoll-websockets-project.git"
+  },
+  "author": "Dave Maurer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davemaurer/interpoll-websockets-project/issues"
+  },
+  "homepage": "https://github.com/davemaurer/interpoll-websockets-project#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "lodash": "^4.0.0",
+    "socket.io": "^1.4.4"
+  }
+}
