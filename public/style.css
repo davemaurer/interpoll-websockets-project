@@ -1,0 +1,29 @@
+body {
+  background-color: rgba(28, 28, 28, 0.93);
+}
+
+.container {
+  text-align: center;
+}
+
+#title {
+  color: white;
+  font-size: 6rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+#sub-title {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+#start-poll-button {
+  margin-top: 2rem;
+}
+
+.form-group input {
+  width: 400px;
+  display: inline;
+}
