@@ -6,14 +6,14 @@ body {
   text-align: center;
 }
 
-#title {
+.title {
   color: white;
   font-size: 6rem;
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
 
-#sub-title {
+.sub-title {
   color: white;
   font-size: 3rem;
   margin-bottom: 2rem;
@@ -21,6 +21,13 @@ body {
 
 #start-poll-button {
   margin-top: 2rem;
+}
+
+.connection-count {
+  color: white;
+  font-size: 1.5rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
 }
 
 .form-group input {
