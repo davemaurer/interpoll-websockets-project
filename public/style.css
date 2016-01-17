@@ -34,3 +34,10 @@ body {
   width: 400px;
   display: inline;
 }
+
+.poll-title {
+  color: white;
+  display: inline;
+  width: 800px;
+  margin-bottom: 2rem;
+}

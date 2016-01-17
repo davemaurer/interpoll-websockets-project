@@ -1,13 +1,14 @@
 <div class="container">
   <div class="title">Welcome to Interpoll</div>
   <div class="sub-title">Start a new Poll</div>
-  <form>
+  <form action="/" method="post">
+    <h3><input type="text" name="poll[title]" class="poll-title form-control" placeholder="Poll Question"></h3>
     <div class="append-option">
       <div class="form-group">
-        <input type="text" name="choice[]" class="form-control" placeholder="Option">
+        <input type="text" name="choice[]" class="form-control" placeholder="Choice">
       </div>
       <div class="form-group">
-        <input type="text" name="choice[]" class="form-control" placeholder="Option">
+        <input type="text" name="choice[]" class="form-control" placeholder="Choice">
       </div>
     </div>
   </form>
