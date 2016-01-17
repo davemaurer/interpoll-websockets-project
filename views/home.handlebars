@@ -1,7 +1,7 @@
 <div class="container">
   <div class="title">Welcome to Interpoll</div>
   <div class="sub-title">Start a new Poll</div>
-  <form action="/" method="post">
+  <form role="form" id="new-poll-form" action="/" method="post">
     <div class="form-group">
     <input type="text" name="poll[pollTitle]" id="poll-title" class="form-control" placeholder="Poll Question">
     </div>
@@ -13,9 +13,10 @@
         <input type="text" name="poll[choices]choice[]" class="form-control" placeholder="Choice">
       </div>
     </div>
+    <!--<input type="submit" class="btn-sm btn-info" id="start-poll-button" value="Submit">-->
   </form>
+  <button class="add-option-button btn-sm btn-success">Add Another Choice Box</button>
+  <button type="submit" form="new-poll-form" value="Submit" class="btn-sm btn-info" id="start-poll-button">Start This Poll</button>
   <div>
-    <button class="add-option-button btn-sm btn-success">Add Another Option</button>
-    <button type="submit" class="btn-sm btn-info" id="start-poll-button">Start This Poll</button>
   </div>
 </div>

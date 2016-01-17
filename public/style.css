@@ -40,3 +40,8 @@ body {
   width: 800px;
   margin-bottom: 2rem;
 }
+
+.add-option-button {
+  display: inline;
+  margin-top: 2rem;
+}
