@@ -3,8 +3,8 @@
     <div class="title">Admin Page</div>
     <div class="sub-title">Poll: {{ poll.title }}</div>
     <div class="poll-urls">
-      <h3>This page's URL (Come here to view your poll results): {{ poll.adminUrl }}</h3>
-      <h3>Vote page URL (Send this to the voters): {{ poll.voterUrl }}</h3>
+      <h3 id="url-address">This page's <a href="{{ poll.adminUrl }}">Admin Page URL</a> will take you back to this page.</h3>
+      <h3 id="url-address">Here is your <a href="{{ poll.voterUrl }}">Voter Page URL</a>. Send this to the people you want to vote.</h3>
     </div>
     <div class="sub-title">Your Poll Results</div>
 

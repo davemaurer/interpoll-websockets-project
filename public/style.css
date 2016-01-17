@@ -45,3 +45,7 @@ body {
   display: inline;
   margin-top: 2rem;
 }
+
+#url-address {
+  color: white;
+}
