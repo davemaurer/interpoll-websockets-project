@@ -35,8 +35,7 @@ body {
   display: inline;
 }
 
-.poll-title {
-  color: white;
+#poll-title {
   display: inline;
   width: 800px;
   margin-bottom: 2rem;
