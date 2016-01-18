@@ -67,3 +67,8 @@ body {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
+
+.show-vote-results {
+  color: white;
+  font-size: 2rem;
+}

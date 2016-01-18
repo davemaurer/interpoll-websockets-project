@@ -9,7 +9,9 @@
       <button type="button" name="vote-button" class="choice-title btn btn-tny btn-warning">Vote For</button> - {{this}}
     </div>
     {{/each}}
-    <div class="connection-count"></div>
+    {{#if poll.showVoteResults}}
+      <div class="show-poll-results">This is working</div>
+    {{/if}}
     </div>
   </div>
 </div>
