@@ -5,7 +5,9 @@
     <div class="sub-title">Choices</div>
     <div class="row col-md-9">
     {{#each poll.choices}}
-    <div class ="choice-title">{{this}}</div>
+    <div class="choice-buttons">
+      <button type="button" name="vote-button" class="choice-title btn btn-tny btn-warning">Vote For</button> {{this}}
+    </div>
     {{/each}}
     <div class="connection-count"></div>
     </div>
