@@ -23,6 +23,15 @@ describe('Poll', function() {
     assert(poll.voterUrl);
   });
 
+  it('has different voter and admin urls', function() {
+    assert.notEqual(poll.adminUrl, poll.voterUrl)
+  });
+
+  it('two poles will have unique ids', function() {
+    var poll2 = new Poll({ pollTitle: 'secondpoll', choices: [1, 2] });
+    assert.notEqual(poll.id, poll2.id)
+  });
+
   it('has a title once the form is filled', function() {
     assert.equal('mypole', poll.pollTitle)
   });
@@ -35,10 +44,12 @@ describe('Poll', function() {
     assert.equal(false, poll.pollClosed)
   });
 
-  it('starts off with an empty votes hash', function()  {
+  it('starts off with an empty votes hash to store responses', function()  {
     assert.deepEqual({}, poll.votes)
   });
 
-
+  it('starts off witha a showVoteResults property set to false', function() {
+    assert.equal(false, poll.showVoteResults)
+  });
 });
 
