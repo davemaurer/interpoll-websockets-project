@@ -21,6 +21,10 @@ describe('Poll', function() {
 
   it('has a voter url', function() {
     assert(poll.voterUrl);
-  })
+  });
+
+  it('has a title once the form is filled', function() {
+    assert.equal('mypole', poll.pollTitle)
+  });
 });
 
