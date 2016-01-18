@@ -1,10 +1,14 @@
 <div class="voter-div">
   <div class="container">
     <div class="title">Vote Now!</div>
-    <div class="sub-title">Options</div>
-    <div>{{ poll.id }}</div>
-    <div>{{ poll.choices.first }}</div>
+    <div class="sub-title">Question: {{ poll.pollTitle }}</div>
+    <div class="sub-title">Choices</div>
+    <div class="row col-md-9">
+    {{#each poll.choices}}
+    <div class ="choice-title">{{this}}</div>
+    {{/each}}
     <div class="connection-count"></div>
+    </div>
   </div>
 </div>
 
