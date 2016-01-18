@@ -19,10 +19,12 @@
   "homepage": "https://github.com/davemaurer/interpoll-websockets-project#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "chai": "^3.4.1",
     "crypto": "0.0.3",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "lodash": "^4.0.0",
+    "mocha": "^2.3.4",
     "socket.io": "^1.4.4"
   }
 }
