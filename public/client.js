@@ -11,7 +11,7 @@ function activateAddOptionButton() {
 }
 
 $(document).ready(function() {
-  document.querySelector('choice-title').on('click', function() {
+  document.querySelector('.choice-title').on('click', function() {
     var vote = $(this).text();
     castVote(vote);
   })
