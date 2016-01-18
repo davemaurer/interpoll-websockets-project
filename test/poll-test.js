@@ -26,5 +26,19 @@ describe('Poll', function() {
   it('has a title once the form is filled', function() {
     assert.equal('mypole', poll.pollTitle)
   });
+
+  it('adds choices to its choice array', function() {
+    assert.equal('choice1', poll.choices[0])
+  });
+
+  it('starts off with a pollClosed value of false', function() {
+    assert.equal(false, poll.pollClosed)
+  });
+
+  it('starts off with an empty votes hash', function()  {
+    assert.deepEqual({}, poll.votes)
+  });
+
+
 });
 
