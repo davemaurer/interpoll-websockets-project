@@ -41,10 +41,6 @@ app.get('/poll/:id', function(req, res) {
 app.get('/admin/:id', function(req, res) {
   var foundPoll = pollRepository.findPoll(req.params.id, 'admin');
   res.render('admin', { poll: foundPoll });
-  //if(foundPoll.votes) {
-  //  io.sockets.emit('voteEmit-' + foundPoll.id, foundPoll.votes);
-  //  io.sockets.emit('voteEmit-' + foundPoll.adminId, foundPoll.votes);
-  //}
 });
 
 
