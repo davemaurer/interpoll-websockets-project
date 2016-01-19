@@ -13,6 +13,13 @@ body {
   margin-bottom: 4rem;
 }
 
+.closed-title {
+  color: red;
+  font-size: 6rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
 .sub-title {
   color: white;
   font-size: 3rem;

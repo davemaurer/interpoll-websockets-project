@@ -20,6 +20,8 @@ var server = http.createServer(app).listen(port, function() {
     console.log('Listening on port ' + port + '.');
   });
 
+const io = socketIo(server);
+
 app.get('/', function(req, res) {
   res.render('home');
 });
@@ -34,17 +36,19 @@ app.post('/', function(req, res) {
 app.get('/poll/:id', function(req, res) {
   var foundPoll = pollRepository.findPoll(req.params.id);
   pollRepository.checkForStopTime(foundPoll, res);
-  //res.render('poll', { poll: foundPoll, pollChoices: foundPoll.choices });
 });
 
 app.get('/admin/:id', function(req, res) {
-  res.render('admin', { poll: pollRepository.findPoll(req.params.id, 'admin') });
+  var foundPoll = pollRepository.findPoll(req.params.id, 'admin');
+  res.render('admin', { poll: foundPoll });
+  if(foundPoll.votes) {
+    io.sockets.emit('voteEmit-' + foundPoll.id, foundPoll.votes);
+    io.sockets.emit('voteEmit-' + foundPoll.adminId, foundPoll.votes);
+  }
 });
 
-const io = socketIo(server);
 
 io.on('connection', function(socket) {
-  //io.sockets.emit('usersConnected', io.engine.clientsCount);
 
   socket.on('message', function(channel, message) {
     if(channel === 'voteCast-' + message.pollId) {
@@ -53,7 +57,6 @@ io.on('connection', function(socket) {
       emitVote(poll);
     } else if(channel === 'closePoll-' + message) {
       var poll = pollRepository.findPoll(message, 'admin').closePoll();
-      console.log('THIS CLOSED STATUS IS', poll.pollClosed);
       io.sockets.emit('closePoll-' + poll.id, 'Poll Closed! Thanks!');
       io.sockets.emit('closePoll-' + poll.adminId, 'You have closed this poll');
     }

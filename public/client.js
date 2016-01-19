@@ -1,5 +1,4 @@
 var socket = io();
-var connectionCount = document.getElementById('connection-count');
 var pollResults = document.getElementsByClassName('tally');
 var adminResults = document.getElementById('admin-tally');
 var choiceButtons = document.getElementById('choice-buttons');
@@ -8,10 +7,6 @@ var adminClosed = document.getElementById('adminclosed');
 var closePollButton = document.getElementById('buttonclose');
 var buttons = document.querySelectorAll('#choices button');
 var pollId = window.location.pathname.split('/').slice(-1).pop();
-
-//socket.on('usersConnected', function(count) {
-//  connectionCount.innerText = 'Connected Users: ' + count;
-//});
 
 function activateAddOptionButton() {
   var addOptionButton = new AddOptionButton(
@@ -49,6 +44,9 @@ socket.on('voteEmit-' + pollId, function(votes) {
     pollResults[i].innerText = 'Current Results: ' + result;
   }
   adminResults.innerText = 'Current Results: ' + result;
+  if(choiceButtons) {
+    choiceButtons.remove();
+  }
 });
 
 function closePollView(message) {
