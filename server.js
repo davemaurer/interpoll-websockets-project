@@ -27,13 +27,14 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
   var poll = pollRepository.createPoll(req.body.poll);
   poll.showVoteResults = req.body.poll.showVoteResults;
+  poll.stopTime = req.body.poll.stopTime;
   res.redirect('/' + poll.adminUrl);
 });
 
 app.get('/poll/:id', function(req, res) {
   var foundPoll = pollRepository.findPoll(req.params.id);
-  res.render('poll', { poll: foundPoll, pollChoices: foundPoll.choices });
-  console.log(req.params.id);
+  pollRepository.checkForStopTime(foundPoll, res);
+  //res.render('poll', { poll: foundPoll, pollChoices: foundPoll.choices });
 });
 
 app.get('/admin/:id', function(req, res) {
