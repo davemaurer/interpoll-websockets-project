@@ -63,6 +63,17 @@ body {
   margin-bottom: 2rem;
 }
 
+.time-option {
+  font-size: 2rem;
+  color: green;
+  margin-bottom: 2rem;
+}
+
+#time-box {
+  display: inline;
+  width: 100px;
+}
+
 .start-poll-title {
   color: white;
   font-size: 3rem;
