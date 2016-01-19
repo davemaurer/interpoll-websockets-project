@@ -35,7 +35,8 @@ app.post('/', function(req, res) {
 
 app.get('/poll/:id', function(req, res) {
   var foundPoll = pollRepository.findPoll(req.params.id);
-  pollRepository.checkForStopTime(foundPoll, res);
+  //pollRepository.checkForStopTime(foundPoll, res);
+  res.render('poll', {poll: foundPoll, pollChoices: foundPoll.choices});
 });
 
 app.get('/admin/:id', function(req, res) {
