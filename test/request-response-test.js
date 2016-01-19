@@ -1,7 +1,7 @@
 const Poll = require('../lib/poll');
 const assert = require('chai').assert;
 const request = require('supertest');
-const app = require('../lib/server');
+const app = require('../server');
 
 describe('server', function() {
   it('returns a 200 response when GET/ is requested', function(done) {
@@ -19,7 +19,7 @@ describe('server', function() {
   it('returns a 200 response when POST/admin/id is requested', function(done) {
     request(app).post('/').type('form').send( {
       pollTitle: 'newpoll',
-      choices: [1, 2]
+      choices: {choice1: 'choice1'}
     });
     assert(200);
     done();

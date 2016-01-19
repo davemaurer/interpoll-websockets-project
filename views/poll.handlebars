@@ -4,7 +4,7 @@
     <div class="sub-title">Question: {{ poll.pollTitle }}</div>
     <div class="sub-title">Choices: Click a button to cast your vote</div>
     <div class="row col-md-9">
-    {{#each poll.choices}}
+    {{#each pollChoices}}
     <div class="choice-buttons">
       <button type="button" name="vote-button" class="choice-title btn btn-tny btn-warning">{{this}}</button>
     </div>
