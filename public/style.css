@@ -58,6 +58,7 @@ body {
 }
 
 .check-box {
+  font-size: 2rem;
   color: green;
   margin-bottom: 2rem;
 }
@@ -68,11 +69,34 @@ body {
   margin-bottom: 1rem;
 }
 
-.show-poll-results {
+.tally {
   color: white;
   font-size: 2rem;
 }
 
+#admin-tally {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
 .close-poll {
   margin-top: 2rem;
+}
+
+#pollclosed-message {
+  color: red;
+  font-size: 3rem;
+}
+
+#choices {
+  font-size: 2.5rem;
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#adminclosed {
+  color: red;
+  font-size: 3rem;
 }

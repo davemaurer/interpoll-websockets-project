@@ -46,10 +46,15 @@ io.on('connection', function(socket) {
   //io.sockets.emit('usersConnected', io.engine.clientsCount);
 
   socket.on('message', function(channel, message) {
-    if(channel === 'voteCast') {
+    if(channel === 'voteCast-' + message.pollId) {
       var poll = pollRepository.findPoll(message.pollId);
       poll.analyzeResponse(message);
       emitVote(poll);
+    } else if(channel === 'closePoll-' + message) {
+      var poll = pollRepository.findPoll(message, 'admin').closePoll();
+      console.log('THIS CLOSED STATUS IS', poll.pollClosed);
+      io.sockets.emit('closePoll-' + poll.id, 'Poll Closed! Thanks!');
+      io.sockets.emit('closePoll-' + poll.adminId, 'You have closed this poll');
     }
   });
 
@@ -60,9 +65,8 @@ io.on('connection', function(socket) {
 });
 
 function emitVote(poll) {
-  console.log('THESE ARE THE POLL VOTES', poll.votes);
-  io.sockets.emit('voteEmit', poll.votes);
-  io.sockets.emit('voteEmit', poll.votes)
+  io.sockets.emit('voteEmit-' + poll.id, poll.votes);
+  io.sockets.emit('voteEmit-' + poll.adminId, poll.votes);
 }
 
 module.exports = server;

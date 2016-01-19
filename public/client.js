@@ -1,11 +1,17 @@
 var socket = io();
 var connectionCount = document.getElementById('connection-count');
-var pollResults = document.getElementById('poll-results');
+var pollResults = document.getElementsByClassName('tally');
+var adminResults = document.getElementById('admin-tally');
+var choiceButtons = document.getElementById('choice-buttons');
+var pollClosed = document.getElementById('pollclosed-message');
+var adminClosed = document.getElementById('adminclosed');
+var closePollButton = document.getElementById('buttonclose');
+var buttons = document.querySelectorAll('#choices button');
 var pollId = window.location.pathname.split('/').slice(-1).pop();
 
-socket.on('usersConnected', function(count) {
-  connectionCount.innerText = 'Connected Users: ' + count;
-});
+//socket.on('usersConnected', function(count) {
+//  connectionCount.innerText = 'Connected Users: ' + count;
+//});
 
 function activateAddOptionButton() {
   var addOptionButton = new AddOptionButton(
@@ -15,28 +21,48 @@ function activateAddOptionButton() {
   addOptionButton.activate();
 }
 
-$(document).ready(function() {
-  $('.choice-title').on('click', function() {
-    var vote = $(this).text();
-    console.log(vote);
-    castVote(vote);
-  })
-});
-
-function castVote(vote) {
-  console.log(pollId);
-  socket.send('voteCast', {
-    pollId: pollId,
-    vote: vote,
-    voter: socket.id
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', function() {
+    socket.send('voteCast-' + pollId, {
+      pollId: pollId,
+      vote: this.innerText,
+      voter: socket.id
+    });
   })
 }
 
-socket.on('voteEmit', function(votes) {
-  for(var choice in votes){
-    pollResults.innerText =
-      '<div>Choice: ' + choice + ' has ' + votes[choice] + " votes</div>"
-  }
+$('.poll-closed').on('click', function() {
+  socket.send('closePoll-' + pollId, pollId)
 });
+
+socket.on('closePoll-' + pollId, function(message) {
+  closePollView(message);
+  closeAdminView(message);
+});
+
+socket.on('voteEmit-' + pollId, function(votes) {
+  var result = '';
+  for(var choice in votes){
+    result += choice + ': ' + votes[choice] + '  ';
+  }
+  for (i = 0; i < pollResults.length; i++) {
+    pollResults[i].innerText = 'Current Results: ' + result;
+  }
+  adminResults.innerText = 'Current Results: ' + result;
+});
+
+function closePollView(message) {
+  if(choiceButtons) {
+    choiceButtons.remove();
+    pollClosed.innerText = message;
+  }
+}
+
+function closeAdminView(message) {
+  if(closePollButton) {
+    closePollButton.remove();
+    adminClosed.innerText = message;
+  }
+}
 
 activateAddOptionButton();
