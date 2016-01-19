@@ -37,10 +37,22 @@ describe('server', function() {
     done();
   });
 
-  it('returns a 404 response when an invalid post request is made', function(done) {
+  it('returns a 404 response when a got to /poll with a bad uid is sent', function(done) {
+    request(app).get('/poll/blahblahblah');
+    assert(404);
+    done();
+  });
+
+  it('returns a 404 response when an invalid set of data is sent', function(done) {
     request(app).post('/').type('form').send( {
       bladhaladdfltu: 'huh?'
     });
+    assert(404);
+    done();
+  });
+
+  it('returns a 404 response when a post to /admin with a bad uid is made', function(done) {
+    request(app).post('/admin/blahblahblah')
     assert(404);
     done();
   });
