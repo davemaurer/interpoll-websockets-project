@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const socketIo = require('socket.io');
 const PollRepository = require('./lib/pollRepository');
-var pollRepository = new PollRepository;
 const express = require('express');
 const app = express();
+
+var pollRepository = new PollRepository;
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -42,7 +43,6 @@ app.get('/admin/:id', function(req, res) {
   var foundPoll = pollRepository.findPoll(req.params.id, 'admin');
   res.render('admin', { poll: foundPoll });
 });
-
 
 io.on('connection', function(socket) {
 
