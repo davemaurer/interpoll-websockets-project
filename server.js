@@ -60,7 +60,9 @@ io.on('connection', function(socket) {
 });
 
 function emitVote(poll) {
-  io.sockets.emit('voteEmit-' + poll.pollId, poll.votes)
+  console.log('THESE ARE THE POLL VOTES', poll.votes);
+  io.sockets.emit('voteEmit', poll.votes);
+  io.sockets.emit('voteEmit', poll.votes)
 }
 
 module.exports = server;

@@ -1,5 +1,6 @@
 var socket = io();
 var connectionCount = document.getElementById('connection-count');
+var pollResults = document.getElementById('poll-results');
 var pollId = window.location.pathname.split('/').slice(-1).pop();
 
 socket.on('usersConnected', function(count) {
@@ -31,11 +32,10 @@ function castVote(vote) {
   })
 }
 
-socket.on('voteEmit-' + pollId, function(votes) {
+socket.on('voteEmit', function(votes) {
   for(var choice in votes){
-    $('.show-poll-results').append(
+    pollResults.innerText =
       '<div>Choice: ' + choice + ' has ' + votes[choice] + " votes</div>"
-    )
   }
 });
 
